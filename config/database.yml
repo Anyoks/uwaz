@@ -14,14 +14,14 @@ default: &default
 
 development:
   <<: *default
-  database: hornbill_development
+  database: uwazi_development
 
   # Warning: The database defined as "test" will be erased and
   # re-generated from your development database when you run "rake".
   # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: hornbill_test
+  database: uwazi_test
 
   # As with config/secrets.yml, you never want to store sensitive information,
   # like your database password, in your source code. If your source code is
@@ -44,6 +44,6 @@ test:
   #
 production:
   <<: *default
-  database: hornbill_production
-  username: hornbill
+  database: uwazi_production
+  username: uwazi
   password: darasa #<%= ENV['DARASA_PRODUCTION_DATABASE_PASSWORD'] %>
