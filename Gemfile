@@ -58,7 +58,7 @@ gem 'twitter'
 #admin lte
 gem 'adminlte2-rails'
 #chart.js
-gem 'chartjs-ror'
+# gem 'chartjs-ror'
 #user management
 gem 'devise'
 #haml
