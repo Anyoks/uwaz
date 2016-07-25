@@ -1,0 +1,154 @@
+%p#notice= notice
+
+.callout.callout-danger
+  %h4 Bill Info
+
+.row
+  .col-md-9
+    .box.box-danger
+      .box-header.with-border
+        %h3.box-title 
+          = @bill.name
+        .box-tools.pull-right
+          %button.btn.btn-box-tool{"data-widget" => "collapse", :type => "button"}
+            %i.fa.fa-minus
+          / %button.btn.btn-box-tool{"data-widget" => "remove", :type => "button"}
+          /   %i.fa.fa-times
+      .box-body
+        %strong Status 
+        Referred to Committee on  
+        %strong #{@bill.first_reading}
+
+        %br
+        This bill was assigned to a congressional committee on #{@bill.first_reading} which will consider it before possibly sending it on to the House or Senate as a whole.
+        %br
+        %br
+        %strong Sponsor
+        %br
+        %br
+        %strong Text
+        %br
+        = image_tag @bill.pdf.url(:medium)
+        %br
+        %br
+        %br
+        %br
+        %strong Bill progress to presidential assent...
+        .progress.progress-sm.active
+          .progress-bar.progress-bar-success.progress-bar-striped{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "20", :role => "progressbar", :style => "width: 20%"}
+            %span.sr-only 20% Complete
+
+        = link_to 'Back', bills_path, class: 'btn btn-primary'
+
+        -if current_user && current_user.is_admin?
+          = link_to 'Edit', edit_bill_path(@bill), class: "label label-warning" 
+
+.callout.callout-warning
+  %h4 Bill History
+ 
+.row
+  .col-md-9
+    .box.box-danger
+      .box-header.with-border
+        %h3.box-title 
+          = @bill.name
+        .box-tools.pull-right
+          %button.btn.btn-box-tool{"data-widget" => "collapse", :type => "button"}
+            %i.fa.fa-minus
+          / %button.btn.btn-box-tool{"data-widget" => "remove", :type => "button"}
+          /   %i.fa.fa-times
+      .box-body
+        %ul.timeline
+          / timeline time label
+          %li.time-label
+            %span.bg-red
+              10 Feb. 2014
+          / /.timeline-label
+          / timeline item
+          %li
+            / timeline icon
+            %i.fa.fa-envelope.bg-blue
+            .timeline-item
+              .box.box
+                .box-body
+                  %h3.timeline-header
+                    %h4 Introduced to the House
+                    Publication of the bill in the Kenya Gazette. This is to allow for dissemination of information before the bill is introduced into the national assembly. This must be effected 14 days before the bill is introduced into parliament
+                  .timeline-body
+                - unless  @status <=4
+                  .overlay
+                
+              
+
+          / %li.time-label
+          /   %span.bg-red
+          /     10 Feb. 2014
+          / /.timeline-label
+          / timeline item
+          %li
+            %i.fa.fa-envelope.bg-grey
+            .timeline-item
+              .box.box
+                .box-body
+                  %h3.timeline-header
+                    %h4 1st reading
+                    This is the second step in the Legislative process
+                  .timeline-body
+                - unless  @status >= 1
+                  .overlay
+
+          %li
+            %i.fa.fa-envelope.bg-grey
+            .timeline-item
+              .box.box
+                .box-body
+                  %h3.timeline-header
+                    %h4 2nd reading
+                    This is the second step in the Legislative process
+                  .timeline-body
+                - unless  @status >=2
+                  .overlay
+
+          / %li.time-label
+          /   %span.bg-red
+          /     10 Feb. 2014
+          / /.timeline-label
+          / timeline item
+          %li
+            %i.fa.fa-envelope.bg-grey
+            .timeline-item
+              .box.box
+                .box-body
+                  %h3.timeline-header
+                    %h4 3rd Reading
+                    This is the thirdstep in the Legislative process
+                  .timeline-body
+                - unless  @status >=3
+                  .overlay
+
+          / %li.time-label
+          /   %span.bg-red
+          /     10 Feb. 2014
+          / /.timeline-label
+          / timeline item
+          %li
+
+            %i.fa.fa-envelope.bg-grey
+            .timeline-item
+              .box.box
+                .box-body
+                  %h3.timeline-header
+                    %h4 Presidential Assent
+                    This is the last step in the Legislative process
+                  .timeline-body
+                  .timeline-footer
+                    %a.btn.btn-primary.btn-xs ...
+                - unless  @status == 4
+                  .overlay
+
+              / /.box
+
+          / END timeline item
+
+
+

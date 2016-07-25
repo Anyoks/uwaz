@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyText
+  first_reading: 2016-07-25
+  second_reading: 2016-07-25
+  third_reading: 2016-07-25
+  summary: MyText
+
+two:
+  name: MyText
+  first_reading: 2016-07-25
+  second_reading: 2016-07-25
+  third_reading: 2016-07-25
+  summary: MyText

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+	resources :bills
 	devise_for :users
 	devise_scope :user do
 		authenticated :user do

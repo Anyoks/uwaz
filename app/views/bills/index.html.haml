@@ -1,0 +1,29 @@
+%h1 Listing bills
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th First reading
+      %th Second reading
+      %th Third reading
+      %th Summary
+      %th
+      %th
+      %th
+
+  %tbody
+    - @bills.each do |bill|
+      %tr
+        %td= bill.name
+        %td= bill.first_reading
+        %td= bill.second_reading
+        %td= bill.third_reading
+        %td= bill.summary
+        %td= link_to 'Show', bill
+        %td= link_to 'Edit', edit_bill_path(bill)
+        %td= link_to 'Destroy', bill, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Bill', new_bill_path

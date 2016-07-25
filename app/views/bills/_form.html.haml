@@ -1,0 +1,46 @@
+= form_for @bill do |f|
+  - if @bill.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@bill.errors.count, "error")} prohibited this bill from being saved:"
+      %ul
+        - @bill.errors.full_messages.each do |msg|
+          %li= msg
+
+
+
+  .box.box-primary
+    .box-header.with-border
+      %h3.box-title Quick Example
+    / /.box-header
+    / form start
+    %form{:lpformnum => "1", :role => "form"}
+      .box-body
+        .form-group
+          .input-group.date
+            .input-group-addon
+              %i.fa.fa-calendar
+            = f.date_select :first_reading, class: "datepicker"
+            / %input.datepicker.form-control.pull-right{:type => "text"}/
+          / /.input group
+        .form-group
+          = f.label :name
+          / %label{:for => "exampleInputEmail1"} Email address
+          / %input#exampleInputEmail1.form-control{:autocomplete => "off", :placeholder => "Enter email", :type => "email"}/
+          = f.text_field :name, class: "form-control"
+        .form-group
+          / %label{:for => "exampleInputPassword1"} Password
+          = f.label :summary
+          = f.text_area :summary, class: "form-control"
+          / %input#exampleInputPassword1.form-control{:autocomplete => "off", :placeholder => "Password", :type => "password"}/
+        .form-group
+          %label{:for => "exampleInputFile"} File input
+          / %input#exampleInputFile{:type => "file"}/
+          = f.file_field :pdf
+          %p.help-block Please select the PDF file for this Bill
+        .checkbox
+          %label
+            %input{:type => "checkbox"}/
+            Check me out
+      / /.box-body
+      .box-footer
+        %button.btn.btn-primary{:type => "submit"} Submit
