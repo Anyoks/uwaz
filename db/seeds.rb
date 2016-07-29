@@ -8,3 +8,7 @@
 ['registered', 'banned', 'moderator', 'admin'].each do |role|
   Role.find_or_create_by({name: role})
 end
+
+['MP', 'Senator', 'MCA'].each do |type|
+  Type.find_or_create_by({name: type})
+end
