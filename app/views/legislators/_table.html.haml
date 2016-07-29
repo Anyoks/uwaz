@@ -1,0 +1,23 @@
+.row
+  .col-md-8
+    .box.box-default
+      .box-header.with-border
+        %h3.box-title
+      .box-body
+        - @legislators.each do |legislator|
+          %ul.products-list.product-list-in-circle
+            %li.item
+              .product-img
+                %img{:alt => "Product Image", :src => "#{legislator.avatar.url}"}/
+              .product-info
+                %a.product-title{:href => "javascript:void(0)"}
+                  #{legislator.first_name} #{legislator.last_name}
+                %span.product-description
+                  Samsung 32" 1080p 60Hz LED Smart HDTV.
+                -if current_user && current_user.is_admin?
+                  = link_to 'Show', legislator, class: "label label-warning"
+                  = link_to 'Edit', edit_legislator_path(legislator), class: "label label-info"
+                  = link_to 'Destroy', legislator, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "label label-danger"
+
+        / /.item
+

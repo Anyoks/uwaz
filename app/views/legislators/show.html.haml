@@ -1,0 +1,22 @@
+%p#notice= notice
+
+%p
+  %b First name:
+  = @legislator.first_name
+%p
+  %b Last name:
+  = @legislator.last_name
+
+= link_to 'Edit', edit_legislator_path(@legislator)
+\|
+= link_to 'Back', legislators_path
+
+.box.box-default
+  .box-header.with-border
+    %h3.box-title Browser Usage
+  .box-body
+    .row
+      .col-md-4
+        Names :{@legislator.first_name} {@legislator.last_name}
+
+      .col-md-8

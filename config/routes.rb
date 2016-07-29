@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :legislators
 	resources :bills
 	devise_for :users
 	devise_scope :user do
